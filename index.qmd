@@ -1,0 +1,165 @@
+---
+title: "Where the Western Diamondback Appears"
+format:
+  html:
+    theme: cosmo
+    toc: false
+    css: styles.css
+---
+
+The Western Diamondback Rattlesnake (*Crotalus atrox*) leaves a strong footprint in biodiversity databases. This plot shows the **number of coordinate-bearing GBIF occurrence records by observation year**, split by country.
+
+```{r}
+#| label: fig-occurrences
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: "Interactive GBIF occurrence records for Crotalus atrox. The left panel shows records by observation year, and the right panel shows total appearances by country."
+#| fig-width: 14
+#| fig-height: 7
+
+library(tidyverse)
+library(jsonlite)
+library(plotly)
+library(htmlwidgets)
+
+gbif_url <- paste0(
+	"https://api.gbif.org/v1/occurrence/search?taxon_key=2444356",
+	"&has_coordinate=true&limit=0&facet=year&facet=country"
+)
+gbif <- fromJSON(gbif_url, simplifyVector = FALSE)
+
+year_records <- gbif$facets[[1]]$counts |>
+	  bind_rows() |>
+	  transmute(year = as.integer(name), records = as.integer(count)) |>
+	filter(!is.na(year), year >= 1900) |>
+	arrange(year)
+
+country_records <- gbif$facets[[2]]$counts |>
+	  bind_rows() |>
+	transmute(country = recode(name, US = "United States", MX = "Mexico", CA = "Canada"),
+						records = as.integer(count)) |>
+	filter(country != "Canada") |>
+	arrange(desc(records))
+
+country_year_records <- map_dfr(year_records$year, \(observation_year) {
+	country_year_url <- paste0(
+		"https://api.gbif.org/v1/occurrence/search?taxon_key=2444356",
+		"&has_coordinate=true&limit=0&year=", observation_year,
+		"&facet=country&facetLimit=100"
+	)
+
+	fromJSON(country_year_url, simplifyVector = FALSE)$facets[[1]]$counts |>
+		bind_rows() |>
+		transmute(
+			year = observation_year,
+			country = recode(name, US = "United States", MX = "Mexico", CA = "Canada"),
+			records = as.integer(count)
+		) |>
+		filter(country != "Canada")
+})
+
+year_records <- year_records |>
+	left_join(
+		country_year_records |>
+			group_by(year) |>
+			arrange(desc(records), .by_group = TRUE) |>
+			summarise(
+				hover = paste0(country, ": ", scales::comma(records), collapse = "<br>")
+			),
+		by = "year"
+	)
+
+p_year <- ggplot() +
+	geom_area(data = year_records, aes(x = year, y = records),
+						fill = "#d99a42", alpha = 0.35) +
+  geom_line(data = year_records, aes(x = year, y = records),
+            color = "#f4d35e", linewidth = 1.3) +
+	geom_point(data = year_records, aes(x = year, y = records, text = hover),
+             color = "#f4d35e", size = 1.5, alpha = 0.85) +
+	scale_x_continuous(breaks = seq(1900, 2030, 10), expand = expansion(mult = c(0.01, 0.02))) +
+	scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0, 0.08))) +
+	labs(title = "Records by observation year", x = "Observation year", y = "GBIF occurrence records") +
+	theme_minimal(base_size = 13) +
+	theme(
+		plot.background = element_rect(fill = "#13252f", color = NA),
+		panel.background = element_rect(fill = "#13252f", color = NA),
+		panel.grid.major = element_line(color = "#35505a", linewidth = 0.35),
+		panel.grid.minor = element_blank(),
+		axis.text = element_text(color = "#f7f2e8"),
+		axis.title = element_text(color = "#d6e0dc")
+	)
+
+p_country <- ggplot(country_records, aes(
+		x = reorder(country, records), y = records,
+		text = paste("Country:", country, "<br>Appearances:", scales::comma(records))
+	)) +
+	geom_col(fill = "#d99a42", width = 0.7) +
+	coord_flip() +
+	scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0, 0.08))) +
+	labs(title = "Appearances by country", x = NULL, y = "Appearances") +
+	theme_minimal(base_size = 12) +
+	theme(
+		plot.background = element_rect(fill = "#13252f", color = NA),
+		panel.background = element_rect(fill = "#13252f", color = NA),
+		panel.grid.major = element_line(color = "#35505a", linewidth = 0.35),
+		panel.grid.minor = element_blank(),
+		axis.text = element_text(color = "#f7f2e8"),
+		axis.title = element_text(color = "#d6e0dc")
+	)
+
+interactive_plot <- subplot(
+		ggplotly(p_year, tooltip = "text"),
+		ggplotly(p_country, tooltip = "text"),
+		nrows = 1,
+		widths = c(0.68, 0.32),
+		margin = 0.04,
+		 titleX = TRUE
+)
+
+interactive_plot$x$country_data <- split(
+	country_year_records |> select(year, country, records),
+	country_year_records$year
+)
+
+onRender(interactive_plot, "function(el, x) {
+	var updateBars = function(event) {
+		var point = event.points.find(function(clickedPoint) {
+			return clickedPoint.data && clickedPoint.data.type !== 'bar';
+		});
+		if (!point || !x.country_data) return;
+
+		var rows = x.country_data[String(point.x)];
+		if (!rows) return;
+
+		var records = rows.map(function(row) { return row.records; });
+		var hover = rows.map(function(row) {
+			return 'Country: ' + row.country + '<br>Appearances: ' +
+				Number(row.records).toLocaleString();
+		});
+		var barIndex = el.data.findIndex(function(trace) {
+			return trace.type === 'bar';
+		});
+
+		Plotly.restyle(el, {
+			x: [records],
+			text: [hover],
+			hovertext: [hover]
+		}, [barIndex]);
+		var maximum = Math.max.apply(null, records);
+		Plotly.relayout(el, {
+			'xaxis2.range': [0, maximum * 1.15],
+			'xaxis2.tickformat': '~s'
+		});
+	};
+
+	el.on('plotly_hover', updateBars);
+	el.on('plotly_click', updateBars);
+}")
+```
+
+## Read the plot carefully
+
+The recent rise reflects **more records being collected and shared**, not necessarily more snakes. GBIF occurrence records are observations contributed by museums, researchers, community science projects, and other data publishers. They are useful for seeing where the species has been recorded, but they are not a complete census.
+
+The plot uses GBIF taxon key `2444356` and filters to records with coordinates. View the [live GBIF taxon search](https://www.gbif.org/species/2444356) and the [GBIF occurrence search](https://www.gbif.org/occurrence/search?taxon_key=2444356&has_coordinate=true) for the underlying records.

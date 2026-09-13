@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Western Diamondback",
+    "section": "",
+    "text": "The Western Diamondback Rattlesnake (Crotalus atrox) is a highly adaptable pit viper of the American Southwest and northern Mexico. Its diamond pattern, banded tail, and warning rattle make it one of the region’s most recognizable snakes."
+  },
+  {
+    "objectID": "about.html#at-a-glance",
+    "href": "about.html#at-a-glance",
+    "title": "About the Western Diamondback",
+    "section": "At a glance",
+    "text": "At a glance\n\n\n\n\n\n\n\nTrait\nField note\n\n\n\n\nScientific name\nCrotalus atrox\n\n\nFamily\nViperidae\n\n\nRange\nSouthwestern United States and northern Mexico\n\n\nHabitat\nDesert scrub, grassland, rocky hills, farmland, and woodland edges\n\n\nActive mostly\nWarm months; often most visible at dusk and after sunset\n\n\nMain food\nRodents, rabbits, birds, lizards, and other small animals\n\n\nHunting tools\nHeat-sensing pits, camouflage, and venom"
+  },
+  {
+    "objectID": "about.html#built-for-its-environment",
+    "href": "about.html#built-for-its-environment",
+    "title": "About the Western Diamondback",
+    "section": "Built for its environment",
+    "text": "Built for its environment\n\nHeat sensing\nTwo small pits between the eyes and nostrils detect infrared radiation. This helps the snake locate warm prey even when light is low. The system works alongside ordinary vision and smell rather than replacing them.\n\n\nThe rattle\nThe rattle is made of interlocking keratin segments. A new segment is added after each shed, but segments break and wear away, so the rattle cannot reliably tell the snake’s age. Its main job is communication: it warns large animals that the snake is close and does not want to be stepped on.\n\n\nVenom and feeding\nWestern Diamondbacks use venom to subdue prey and begin digestion. Their diet is useful for ecosystems because rodents make up a large share of it. Like other rattlesnakes, they can strike quickly but generally prefer to conserve energy and avoid confrontation."
+  },
+  {
+    "objectID": "about.html#reproduction-and-activity",
+    "href": "about.html#reproduction-and-activity",
+    "title": "About the Western Diamondback",
+    "section": "Reproduction and activity",
+    "text": "Reproduction and activity\nFemales give birth to live young rather than laying eggs. Young snakes are independent soon after birth and already have working venom and a small rattle. Adults may spend much of the hottest part of the day sheltered under rocks, in burrows, or in vegetation, then become more active as temperatures moderate.\n\n\n\n\n\n\nNoteReading the map carefully\n\n\n\nThe Home page uses coordinate-bearing GBIF occurrence records. A larger number of records means that more observations were collected and shared in that place or year; it does not directly measure the number of snakes living there."
+  },
+  {
+    "objectID": "about.html#learn-more",
+    "href": "about.html#learn-more",
+    "title": "About the Western Diamondback",
+    "section": "Learn more",
+    "text": "Learn more\n\nGBIF species profile for Crotalus atrox\nArizona-Sonora Desert Museum: Western Diamondback\nSmithsonian’s National Zoo: rattlesnakes"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Where the Western Diamondback Appears",
+    "section": "",
+    "text": "The Western Diamondback Rattlesnake (Crotalus atrox) leaves a strong footprint in biodiversity databases. This plot shows the number of coordinate-bearing GBIF occurrence records by observation year, split by country.\nFigure 1: Interactive GBIF occurrence records for Crotalus atrox. The left panel shows records by observation year, and the right panel shows total appearances by country."
+  },
+  {
+    "objectID": "index.html#read-the-plot-carefully",
+    "href": "index.html#read-the-plot-carefully",
+    "title": "Where the Western Diamondback Appears",
+    "section": "Read the plot carefully",
+    "text": "Read the plot carefully\nThe recent rise reflects more records being collected and shared, not necessarily more snakes. GBIF occurrence records are observations contributed by museums, researchers, community science projects, and other data publishers. They are useful for seeing where the species has been recorded, but they are not a complete census.\nThe plot uses GBIF taxon key 2444356 and filters to records with coordinates. View the live GBIF taxon search and the GBIF occurrence search for the underlying records."
+  }
+]

@@ -1,0 +1,53 @@
+---
+title: "About the Western Diamondback"
+subtitle: "A quick field guide to Crotalus atrox"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    css: styles.css
+---
+
+The Western Diamondback Rattlesnake (*Crotalus atrox*) is a highly adaptable pit viper of the American Southwest and northern Mexico. Its diamond pattern, banded tail, and warning rattle make it one of the region's most recognizable snakes.
+
+## At a glance
+
+| Trait | Field note |
+|:--|:--|
+| Scientific name | *Crotalus atrox* |
+| Family | Viperidae |
+| Range | Southwestern United States and northern Mexico |
+| Habitat | Desert scrub, grassland, rocky hills, farmland, and woodland edges |
+| Active mostly | Warm months; often most visible at dusk and after sunset |
+| Main food | Rodents, rabbits, birds, lizards, and other small animals |
+| Hunting tools | Heat-sensing pits, camouflage, and venom |
+
+## Built for its environment
+
+### Heat sensing
+
+Two small pits between the eyes and nostrils detect infrared radiation. This helps the snake locate warm prey even when light is low. The system works alongside ordinary vision and smell rather than replacing them.
+
+### The rattle
+
+The rattle is made of interlocking keratin segments. A new segment is added after each shed, but segments break and wear away, so the rattle cannot reliably tell the snake's age. Its main job is communication: it warns large animals that the snake is close and does not want to be stepped on.
+
+### Venom and feeding
+
+Western Diamondbacks use venom to subdue prey and begin digestion. Their diet is useful for ecosystems because rodents make up a large share of it. Like other rattlesnakes, they can strike quickly but generally prefer to conserve energy and avoid confrontation.
+
+## Reproduction and activity
+
+Females give birth to live young rather than laying eggs. Young snakes are independent soon after birth and already have working venom and a small rattle. Adults may spend much of the hottest part of the day sheltered under rocks, in burrows, or in vegetation, then become more active as temperatures moderate.
+
+::: {.callout-note}
+## Reading the map carefully
+
+The Home page uses coordinate-bearing GBIF occurrence records. A larger number of records means that more observations were collected and shared in that place or year; it does **not** directly measure the number of snakes living there.
+:::
+
+## Learn more
+
+- [GBIF species profile for *Crotalus atrox*](https://www.gbif.org/species/2444356)
+- [Arizona-Sonora Desert Museum: Western Diamondback](https://www.desertmuseum.org/books/nhsd_rattlesnakes.php)
+- [Smithsonian's National Zoo: rattlesnakes](https://nationalzoo.si.edu/animals/rattlesnake)

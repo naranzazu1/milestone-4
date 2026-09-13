@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #13252f;
+  --paper: #f7f2e8;
+  --sand: #d99a42;
+  --signal: #f4d35e;
+  --muted: #52666c;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#quarto-content {
+  max-width: 1280px;
+  padding-bottom: 4rem;
+}
+
+h1 {
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.95;
+  max-width: 760px;
+  margin-bottom: 0.8rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin-bottom: 2.3rem;
+}
+
+.quarto-figure {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 14px 14px 0 var(--sand);
+  margin: 2.4rem 0 3rem;
+  overflow: hidden;
+  padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.figure-caption {
+  color: #d6e0dc;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.2rem 0.8rem;
+}
+
+h2 {
+  border-top: 2px solid var(--ink);
+  color: var(--ink);
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 0.85rem;
+}
+
+table {
+  background: rgba(255, 255, 255, 0.35);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #c8c5b9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+thead {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+td, th {
+  padding: 0.85rem 1rem !important;
+  vertical-align: top;
+}
+
+blockquote {
+  background: #f0d28e;
+  border-left: 5px solid var(--ink);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88rem;
+  margin-top: 2.4rem;
+  padding: 1rem 1.25rem;
+}
+
+a {
+  color: #8d4f1f;
+  font-weight: 600;
+}
