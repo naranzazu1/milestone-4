@@ -33,5 +33,19 @@
     "title": "About the Western Diamondback",
     "section": "Learn more",
     "text": "Learn more\n\nGBIF species profile for Crotalus atrox\nArizona-Sonora Desert Museum: Western Diamondback\nSmithsonian’s National Zoo: rattlesnakes"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Where the Western Diamondback Appears",
+    "section": "",
+    "text": "The Western Diamondback Rattlesnake (Crotalus atrox) leaves a strong footprint in biodiversity databases. This plot shows the number of coordinate-bearing GBIF occurrence records by observation year, split by country.\nFigure 1: Interactive GBIF occurrence records for Crotalus atrox. The left panel shows records by observation year, and the right panel shows total appearances by country."
+  },
+  {
+    "objectID": "index.html#read-the-plot-carefully",
+    "href": "index.html#read-the-plot-carefully",
+    "title": "Where the Western Diamondback Appears",
+    "section": "Read the plot carefully",
+    "text": "Read the plot carefully\nThe recent rise reflects more records being collected and shared, not necessarily more snakes. GBIF occurrence records are observations contributed by museums, researchers, community science projects, and other data publishers. They are useful for seeing where the species has been recorded, but they are not a complete census.\nThe plot uses GBIF taxon key 2444356 and filters to records with coordinates. View the live GBIF taxon search and the GBIF occurrence search for the underlying records."
   }
 ]
